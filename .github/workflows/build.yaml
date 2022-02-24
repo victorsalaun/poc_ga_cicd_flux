@@ -27,5 +27,7 @@ jobs:
           createPR: false
           message: 'Bump Docker Image tag [skip ci]'
 
-      - name: Semantic Release
+      - name: Create Release
         uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
