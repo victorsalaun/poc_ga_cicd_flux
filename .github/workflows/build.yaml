@@ -9,3 +9,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Build Docker
+        id: change
+        run: |
+            DOCKER_IMAGE_VERSION=${GITHUB_REF_NAME}-$(date +%Y%m%d%H%M%S)
+            echo "::set-output name=version::$DOCKER_IMAGE_VERSION"
+
+      - name: Update spec
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'spec.yaml'
+          propertyPath: 'image.version'
+          value: ${{ steps.change.outputs.version }}
+          branch: main
+          createPR: false
+          message: '[skip ci]'
