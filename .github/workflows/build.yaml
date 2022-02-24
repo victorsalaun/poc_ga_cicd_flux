@@ -15,6 +15,7 @@ jobs:
         run: |
           DOCKER_IMAGE_VERSION=${GITHUB_REF_NAME}-$(date +%Y%m%d%H%M%S)
           echo "::set-output name=version::$DOCKER_IMAGE_VERSION"
+          echo "::set-output name=branch::$GITHUB_REF_NAME"
 
       - name: Update spec
         uses: fjogeleit/yaml-update-action@master
@@ -22,6 +23,6 @@ jobs:
           valueFile: 'spec.yaml'
           propertyPath: 'image.version'
           value: ${{ steps.change.outputs.version }}
-          branch: ${GITHUB_REF_NAME}
+          branch: ${{ steps.change.outputs.branch }}
           createPR: false
           message: '[skip ci]'
