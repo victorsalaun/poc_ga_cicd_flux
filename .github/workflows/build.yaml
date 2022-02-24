@@ -34,5 +34,5 @@ jobs:
         with:
           branches: |
             [
-              'master' 
+              'main' 
             ]
