@@ -27,8 +27,11 @@ jobs:
           createPR: false
           message: 'Bump Docker Image tag [skip ci]'
 
-      - name: Pull
-        run: git pull
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Create Release
         uses: cycjimmy/semantic-release-action@v2
@@ -38,3 +41,4 @@ jobs:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
+            @conventional-changelog-conventionalcommits
