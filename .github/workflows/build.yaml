@@ -28,6 +28,7 @@ jobs:
           message: 'Bump Docker Image tag [skip ci]'
 
   release:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
