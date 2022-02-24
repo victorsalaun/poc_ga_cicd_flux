@@ -14,7 +14,7 @@ jobs:
         id: change
         run: |
             DOCKER_IMAGE_VERSION=${GITHUB_REF_NAME}-$(date +%Y-%m-%dT%T%z)
-            echo "::set-output name=version::DOCKER_IMAGE_VERSION"
+            echo "::set-output name=version::$DOCKER_IMAGE_VERSION"
 
       - name: Update spec
         uses: fjogeleit/yaml-update-action@master
