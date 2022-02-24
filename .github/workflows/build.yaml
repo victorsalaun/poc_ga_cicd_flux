@@ -22,6 +22,6 @@ jobs:
           valueFile: 'spec.yaml'
           propertyPath: 'image.version'
           value: ${{ steps.change.outputs.version }}
-          branch: ${{ GITHUB_REF_NAME }}
+          branch: ${GITHUB_REF_NAME}
           createPR: false
           message: '[skip ci]'
