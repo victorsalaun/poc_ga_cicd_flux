@@ -1,3 +1,10 @@
+## [1.1.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.0.0...v1.1.0) (2022-02-24)
+
+
+### Features
+
+* update deploy job ([bcffba7](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/bcffba77c3176b27349536358e422afb19b1cb92))
+
 ## 1.0.0 (2022-02-24)
 
 
