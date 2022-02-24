@@ -27,8 +27,8 @@ jobs:
           createPR: false
           message: 'Bump Docker Image tag [skip ci]'
 
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Pull
+        run: git pull
 
       - name: Create Release
         uses: cycjimmy/semantic-release-action@v2
