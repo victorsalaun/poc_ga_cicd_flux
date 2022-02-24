@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        run: git pull
 
       - name: Create Release
         uses: cycjimmy/semantic-release-action@v2
