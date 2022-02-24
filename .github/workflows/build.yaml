@@ -25,7 +25,7 @@ jobs:
           value: ${{ steps.variables.outputs.version }}
           branch: ${{ steps.variables.outputs.branch }}
           createPR: false
-          message: 'Bump Docker Image tag [skip ci]'
+          message: 'chore: Bump Docker Image tag [skip ci]'
 
   release:
     needs: build
