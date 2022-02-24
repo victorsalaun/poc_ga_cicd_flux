@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build Docker
-        id: change
+      - name: Set variables
+        id: variables
         run: |
           DOCKER_IMAGE_VERSION=${GITHUB_REF_NAME}-$(date +%Y%m%d%H%M%S)
           echo "::set-output name=version::$DOCKER_IMAGE_VERSION"
@@ -21,8 +21,11 @@ jobs:
         uses: fjogeleit/yaml-update-action@master
         with:
           valueFile: 'spec.yaml'
-          propertyPath: 'image.version'
-          value: ${{ steps.change.outputs.version }}
-          branch: ${{ steps.change.outputs.branch }}
+          propertyPath: 'image.tag'
+          value: ${{ steps.variables.outputs.version }}
+          branch: ${{ steps.variables.outputs.branch }}
           createPR: false
-          message: '[skip ci]'
+          message: 'Bump Docker Image tag [skip ci]'
+
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
