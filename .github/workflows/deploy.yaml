@@ -39,7 +39,7 @@ on:
 jobs:
   integration-aws-deploy:
     name: "Deploy to integration:aws"
-    if: ${{ success() && github.event.inputs.integration_aws == 'true' }}
+    if: ${{ always() && github.event.inputs.integration_aws == 'true' }}
     runs-on: ubuntu-latest
     environment: "integration:aws"
     steps:
@@ -74,7 +74,7 @@ jobs:
         uses: actions/checkout@v2
   integration-azure-deploy:
     name: "Deploy to integration:azure"
-    if: ${{ success() && github.event.inputs.integration_azure == 'true' }}
+    if: ${{ always() && github.event.inputs.integration_azure == 'true' }}
     runs-on: ubuntu-latest
     environment: "integration:azure"
     steps:
@@ -109,7 +109,7 @@ jobs:
         uses: actions/checkout@v2
   staging-aws-deploy:
     name: "Deploy to staging:aws"
-    if: ${{ success() && github.event.inputs.staging_aws == 'true' }}
+    if: ${{ always() && github.event.inputs.staging_aws == 'true' }}
     runs-on: ubuntu-latest
     environment: "staging:aws"
     needs:
@@ -147,7 +147,7 @@ jobs:
         uses: actions/checkout@v2
   staging-azure-deploy:
     name: "Deploy to staging:azure"
-    if: ${{ success() && github.event.inputs.staging_azure == 'true' }}
+    if: ${{ always() && github.event.inputs.staging_azure == 'true' }}
     runs-on: ubuntu-latest
     environment: "staging:azure"
     needs:
@@ -185,7 +185,7 @@ jobs:
         uses: actions/checkout@v2
   production-aws-1-deploy:
     name: "Deploy to production:aws:1"
-    if: ${{ success() && github.event.inputs.production_aws_1 == 'true' }}
+    if: ${{ always() && github.event.inputs.production_aws_1 == 'true' }}
     runs-on: ubuntu-latest
     environment: "production:aws:1"
     needs:
@@ -223,7 +223,7 @@ jobs:
         uses: actions/checkout@v2
   production-aws-2-deploy:
     name: "Deploy to production:aws:2"
-    if: ${{ success() && github.event.inputs.production_aws_2 == 'true' }}
+    if: ${{ always() && github.event.inputs.production_aws_2 == 'true' }}
     runs-on: ubuntu-latest
     environment: "production:aws:2"
     needs:
@@ -260,7 +260,7 @@ jobs:
         uses: actions/checkout@v2
   production-azure-1-deploy:
     name: "Deploy to production:azure:1"
-    if: ${{ success() && github.event.inputs.production_azure_1 == 'true' }}
+    if: ${{ always() && github.event.inputs.production_azure_1 == 'true' }}
     runs-on: ubuntu-latest
     environment: "production:azure:1"
     needs:
@@ -298,7 +298,7 @@ jobs:
         uses: actions/checkout@v2
   production-azure-2-deploy:
     name: "Deploy to production:azure:2"
-    if: ${{ success() && github.event.inputs.production_azure_2 == 'true' }}
+    if: ${{ always() && github.event.inputs.production_azure_2 == 'true' }}
     runs-on: ubuntu-latest
     environment: "production:azure:2"
     needs:
