@@ -43,8 +43,27 @@ jobs:
     runs-on: ubuntu-latest
     environment: "integration:azure"
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: integration_azure
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: integration_azure
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   integration-azure-deploy-validation:
     name: "Validate deployment on integration:azure"
     runs-on: ubuntu-latest
@@ -61,8 +80,27 @@ jobs:
       - integration-aws-deploy-validation
       - integration-azure-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: staging_aws
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: staging_aws
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   staging-aws-deploy-validation:
     name: "Validate deployment on staging:aws"
     runs-on: ubuntu-latest
@@ -79,8 +117,27 @@ jobs:
       - integration-aws-deploy-validation
       - integration-azure-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: staging_azure
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: staging_azure
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   staging-azure-deploy-validation:
     name: "Validate deployment on staging:azure"
     runs-on: ubuntu-latest
@@ -97,8 +154,27 @@ jobs:
       - staging-aws-deploy-validation
       - staging-azure-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: production_aws_1
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: production_aws_1
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   production-aws-1-deploy-validation:
     name: "Validate deployment on production:aws:1"
     runs-on: ubuntu-latest
@@ -114,8 +190,27 @@ jobs:
     needs:
       - production-aws-1-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: production_aws_2
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: production_aws_2
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   production-aws-2-deploy-validation:
     name: "Validate deployment on production:aws:2"
     runs-on: ubuntu-latest
@@ -132,8 +227,27 @@ jobs:
       - staging-aws-deploy-validation
       - staging-azure-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: production_azure_1
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: production_azure_1
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   production-azure-1-deploy-validation:
     name: "Validate deployment on production:azure:1"
     runs-on: ubuntu-latest
@@ -149,8 +263,27 @@ jobs:
     needs:
       - production-azure-1-deploy-validation
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
+      - name: Get change
+        id: spec
+        uses: KJ002/read-yaml@main
+        with:
+          file: './spec.yaml'
+          key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: production_azure_2
+      - name: Apply changes
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          valueFile: 'app.yaml'
+          propertyPath: 'spec.values.image.tag'
+          value: ${{ steps.spec.outputs.data }}
+          branch: production_azure_2
+          createPR: false
+          message: 'chore: Apply changes [skip ci]'
   production-azure-2-deploy-validation:
     name: "Validate deployment on production:azure:2"
     runs-on: ubuntu-latest
