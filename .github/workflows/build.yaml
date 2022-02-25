@@ -5,6 +5,7 @@ on:
 
 jobs:
   build:
+    name: Build application
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,6 +41,7 @@ jobs:
         run: git pull
 
       - name: Create Release
+        id: semantic_release
         uses: cycjimmy/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,5 +52,5 @@ jobs:
             conventional-changelog-conventionalcommits
 
       - name: Deploy Release
-        if: steps.semantic.outputs.new_release_published == 'true'
+        if: steps.semantic_release.outputs.new_release_published == 'true'
         uses: ./.github/workflows/deploy.yaml
