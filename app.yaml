@@ -17,4 +17,4 @@ spec:
       interval: 1m
   values:
     image:
-      tag: main-1.0.0
+      tag: main-20220225174929
