@@ -18,3 +18,4 @@ spec:
   values:
     image:
       tga: main-1.0.0
+      tag: main-20220225172720
