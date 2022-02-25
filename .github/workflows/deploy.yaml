@@ -139,6 +139,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   staging-aws-deploy-validation:
     name: "Validate deployment on staging:aws"
+    if: ${{ always() && github.event.inputs.staging_aws == 'true' && needs.staging-aws-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - staging-aws-deploy
@@ -177,6 +178,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   staging-azure-deploy-validation:
     name: "Validate deployment on staging:azure"
+    if: ${{ always() && github.event.inputs.staging_azure == 'true' && needs.staging-azure-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - staging-azure-deploy
@@ -215,6 +217,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   production-aws-1-deploy-validation:
     name: "Validate deployment on production:aws:1"
+    if: ${{ always() && github.event.inputs.production_aws_1 == 'true' && needs.production-aws-1-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - production-aws-1-deploy
@@ -252,6 +255,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   production-aws-2-deploy-validation:
     name: "Validate deployment on production:aws:2"
+    if: ${{ always() && github.event.inputs.production_aws_2 == 'true' && needs.production-aws-2-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - production-aws-2-deploy
@@ -290,6 +294,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   production-azure-1-deploy-validation:
     name: "Validate deployment on production:azure:1"
+    if: ${{ always() && github.event.inputs.production_azure_1 == 'true' && needs.production-azure-1-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - production-azure-1-deploy
@@ -327,6 +332,7 @@ jobs:
           message: 'chore: Apply changes [skip ci]'
   production-azure-2-deploy-validation:
     name: "Validate deployment on production:azure:2"
+    if: ${{ always() && github.event.inputs.production_azure_2 == 'true' && needs.production-azure-2-deploy.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - production-azure-2-deploy
