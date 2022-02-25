@@ -1,3 +1,10 @@
+## [1.10.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.9.0...v1.10.0) (2022-02-25)
+
+
+### Features
+
+* apply changes on integration_aws ([0a1cfae](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/0a1cfae3ed82f6c22a2bd871559eef489df8609b))
+
 ## [1.9.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.8.0...v1.9.0) (2022-02-25)
 
 
