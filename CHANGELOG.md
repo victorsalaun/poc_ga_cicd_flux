@@ -1,3 +1,11 @@
+## [1.18.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.17.0...v1.18.0) (2022-02-25)
+
+
+### Features
+
+* **TEST-1:** new feature ([#2](https://github.com/victorsalaun/poc_ga_cicd_flux/issues/2)) ([76c1c36](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/76c1c36239f797a52a5c2a36753a2461436d0a04))
+* **TEST-2:** new feature ([#3](https://github.com/victorsalaun/poc_ga_cicd_flux/issues/3)) ([6dabb8f](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/6dabb8f249a065d7dbf9f53d1a3828d7c80aea0c))
+
 ## [1.17.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.16.0...v1.17.0) (2022-02-25)
 
 
