@@ -1,3 +1,10 @@
+## [1.17.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.16.0...v1.17.0) (2022-02-25)
+
+
+### Features
+
+* create tag workflow ([396c73b](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/396c73b2deacf3a6e017d9c1c0edf807892fa941))
+
 ## [1.16.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.15.0...v1.16.0) (2022-02-25)
 
 
