@@ -4,8 +4,33 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  integration-aws:
     runs-on: ubuntu-latest
+    environment: "integration:aws"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  integration-azure:
+    runs-on: ubuntu-latest
+    environment: "integration:azure"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  staging-aws:
+    runs-on: ubuntu-latest
+    environment: "staging:aws"
+    needs:
+      - integration-aws
+      - integration-azure
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  staging-azure:
+    runs-on: ubuntu-latest
+    environment: "staging:azure"
+    needs:
+      - integration-aws
+      - integration-azure
     steps:
       - name: Checkout
         uses: actions/checkout@v2
