@@ -39,6 +39,7 @@ on:
 jobs:
   integration-aws-deploy:
     name: "Deploy to integration:aws"
+    if: ${{ github.event.inputs.integration_aws == 'true' }}
     runs-on: ubuntu-latest
     environment: "integration:aws"
     steps:
