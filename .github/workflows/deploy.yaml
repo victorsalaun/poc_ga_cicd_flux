@@ -4,67 +4,139 @@ on:
   workflow_dispatch:
 
 jobs:
-  integration-aws:
+  integration-aws-deploy:
+    name: "Deploy to integration:aws"
     runs-on: ubuntu-latest
     environment: "integration:aws"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  integration-azure:
+  integration-aws-deploy-validation:
+    name: "Validate deployment on integration:aws"
+    runs-on: ubuntu-latest
+    needs:
+      - integration-aws-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  integration-azure-deploy:
+    name: "Deploy to integration:azure"
     runs-on: ubuntu-latest
     environment: "integration:azure"
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  staging-aws:
+  integration-azure-deploy-validation:
+    name: "Validate deployment on integration:azure"
+    runs-on: ubuntu-latest
+    needs:
+      - integration-azure-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  staging-aws-deploy:
+    name: "Deploy to staging:aws"
     runs-on: ubuntu-latest
     environment: "staging:aws"
     needs:
-      - integration-aws
-      - integration-azure
+      - integration-aws-deploy-validation
+      - integration-azure-deploy-validation
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  staging-azure:
+  staging-aws-deploy-validation:
+    name: "Validate deployment on staging:aws"
+    runs-on: ubuntu-latest
+    needs:
+      - staging-aws-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  staging-azure-deploy:
+    name: "Deploy to staging:azure"
     runs-on: ubuntu-latest
     environment: "staging:azure"
     needs:
-      - integration-aws
-      - integration-azure
+      - integration-aws-deploy-validation
+      - integration-azure-deploy-validation
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  production-aws-1:
+  staging-aws-azure-validation:
+    name: "Validate deployment on staging:azure"
+    runs-on: ubuntu-latest
+    needs:
+      - staging-azure-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  production-aws-1-deploy:
+    name: "Deploy to production:aws:1"
     runs-on: ubuntu-latest
     environment: "production:aws:1"
     needs:
-      - staging-aws
-      - staging-azure
+      - staging-aws-deploy-validation
+      - staging-azure-deploy-validation
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  production-aws-2:
+  production-aws-1-deploy-validation:
+    name: "Validate deployment on production:aws:1"
+    runs-on: ubuntu-latest
+    needs:
+      - production-aws-1-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  production-aws-2-deploy:
+    name: "Deploy to production:aws:2"
     runs-on: ubuntu-latest
     environment: "production:aws:2"
     needs:
-      - production-aws-1
+      - production-aws-1-deploy-validation
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  production-azure-1:
+  production-aws-2-deploy-validation:
+    name: "Validate deployment on production:aws:2"
+    runs-on: ubuntu-latest
+    needs:
+      - production-aws-2-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  production-azure-1-deploy:
+    name: "Deploy to production:azure:1"
     runs-on: ubuntu-latest
     environment: "production:azure:1"
     needs:
-      - staging-aws
-      - staging-azure
+      - staging-aws-deploy-validation
+      - staging-azure-deploy-validation
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-  production-azure-2:
+  production-azure-1-deploy-validation:
+    name: "Validate deployment on production:azure:1"
+    runs-on: ubuntu-latest
+    needs:
+      - production-azure-1-deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  production-azure-2-deploy:
+    name: "Deploy to production:azure:2"
     runs-on: ubuntu-latest
     environment: "production:azure:2"
     needs:
-      - production-azure-1
+      - production-azure-1-deploy-validation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+  production-azure-2-deploy-validation:
+    name: "Validate deployment on production:azure:2"
+    runs-on: ubuntu-latest
+    needs:
+      - production-azure-2-deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v2
