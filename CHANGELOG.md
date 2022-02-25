@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.11.0...v1.12.0) (2022-02-25)
+
+
+### Features
+
+* add inputs to deploy job ([e6be3d5](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/e6be3d5275e1c7179c045670215c549e01204c23))
+
 ## [1.11.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.10.0...v1.11.0) (2022-02-25)
 
 
