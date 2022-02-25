@@ -9,16 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     environment: "integration:aws"
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v2
-        with:
-          ref: integration_aws
       - name: Get change
         id: spec
         uses: KJ002/read-yaml@main
         with:
           file: './spec.yaml'
           key-path: '["image", "tag"]'
+      - name: Checkout tag
+        uses: actions/checkout@v2
+        with:
+          ref: integration_aws
       - name: Apply changes
         uses: fjogeleit/yaml-update-action@master
         with:
