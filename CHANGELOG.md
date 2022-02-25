@@ -1,3 +1,11 @@
+## [1.19.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.18.0...v1.19.0) (2022-02-25)
+
+
+### Features
+
+* auto deploy ([87dab6a](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/87dab6a0ac6b3d0d7618903d0e113d8b9c8927c9))
+* auto deploy ([6292b74](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/6292b7493303508950fedafa3feab163a74a1958))
+
 ## [1.18.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.17.0...v1.18.0) (2022-02-25)
 
 
