@@ -1,3 +1,10 @@
+## [1.11.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.10.0...v1.11.0) (2022-02-25)
+
+
+### Features
+
+* apply changes on all environments ([681eeb9](https://github.com/victorsalaun/poc_ga_cicd_flux/commit/681eeb9ea9f29e4960bab47cd3c9192c748e3265))
+
 ## [1.10.0](https://github.com/victorsalaun/poc_ga_cicd_flux/compare/v1.9.0...v1.10.0) (2022-02-25)
 
 
