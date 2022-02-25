@@ -52,5 +52,5 @@ jobs:
             conventional-changelog-conventionalcommits
 
       - name: Deploy Release
-        if: steps.semantic_release.outputs.new_release_published == 'true'
-        uses: "./.github/workflows/deploy.yaml@${{ steps.semantic_release.outputs.new_release_version }}"
+        if: ${{ steps.semantic_release.outputs.new_release_published == 'true' }}
+        uses: ./.github/workflows/deploy.yaml@v1.21.0
